@@ -36,7 +36,7 @@ myModule.factory('angelloModel', function($rootScope) {
             {name:'Enhancement'},
             {name:'Bug'},
             {name:'Spike'}
-        ];    
+        ];
         return tempArray;
     };
 

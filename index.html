@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <html ng-app="Angello">
 <head>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
-	<script type="text/javascript" src="app.js"></script>
+	<script src="_frameworks/jquery.min.js"></script>
+	<script src="_frameworks/angular.min.js"></script>
+	<script type="text/javascript" src="_js/app.js"></script>
 	
 	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="app.css">
+	<link rel="stylesheet" href="_css/app.css">
 
 	<title>Angello Lite</title>
 </head>
@@ -17,6 +17,8 @@
 			<div class="story" ng-repeat="story in stories" ng-click="setCurrentStory(story)">
 				<h4>{{story.title}}</h4>
 				<p>{{story.description}}</p>
+				<p>{{story.criteria}}</p>
+				<p>{{story.status}}</p>
 			</div>
 			<br>
 			<a class="btn" ng-click="createStory()" ><i class="icon-plus"></i></a>
@@ -67,6 +69,15 @@
 					</div>
 				</div>
 			</form>
+		</div>
+		<div class="small-12 large-2 columns" ng-repeat="status in statuses">
+			<h3>{{status.name}}</h3>
+			<article class="large-12 columns cardWrapper"
+				ng-repeat="story in stories | filter:{status:status.name}"
+				ng-click="setCurrentStory(story)">
+				<h4>{{story.title}}<h4>
+				<p>{{story.description}}</p>
+			</article>
 		</div>
 	</div>
 </body>
